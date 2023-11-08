@@ -12,8 +12,10 @@
             :key="idx"
             :index="index + '-' + idx"
             @click="showContent(it)"
-            >{{ it.title }}</el-menu-item
           >
+            <!-- <a :href="href">{{ it.title }}</a> -->
+            {{ it.title }}
+          </el-menu-item>
         </el-sub-menu>
       </el-menu>
     </el-col>
@@ -35,22 +37,29 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
+
 import { ElButton, ElMenu, ElCol, ElSubMenu, ElMenuItem, ElIcon, ElMenuItemGroup } from 'element-plus';
 import 'element-plus/dist/index.css';
+
 const children = ref([]);
 const childrenMenu = ref([]);
 const visable = ref([]);
 const data = ref([]);
 const Id = ref();
+const link = ref();
+const href = ref();
 const emit = defineEmits(['select']);
 const props = defineProps({
   menu: Object,
 });
+
 const posts = await axios.get(
   'http://127.0.0.1:2368/ghost/api/content/posts/?key=7a8900504baaab57668c5a26e2&include=tags'
 );
 onMounted(() => {
-  console.log('menu', props.menu);
+  link.value = window.location.href;
+
+  console.log('menu data', props.menu, link.value);
   props.menu.data.tags.forEach((element, index) => {
     data.value.push(Object.assign(element, { visable: false }));
     showMenu(element.name, index);
@@ -83,6 +92,10 @@ const showChildren = (item) => {
 const showContent = (item) => {
   console.log('select tag', item.id);
   emit('select', item.id);
+  Id.value = item.id;
+  window.location.href = link.value.includes('?')
+    ? link.value.split('?')[0] + '?id=' + item.id
+    : link.value + '?id=' + item.id;
 };
 const handleOpen = (e) => {
   console.log('handleOpen', e);

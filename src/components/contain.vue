@@ -19,19 +19,21 @@ const posts = await axios.get(
   'http://127.0.0.1:2368/ghost/api/content/posts/?key=7a8900504baaab57668c5a26e2&include=tags'
 );
 onMounted(() => {
+  Id.value = window.location.href.split('?id=')[1];
+  getContent();
   console.log('sgyfgiugfo', posts.data.posts);
 });
-const select = (e) => {
-  console.log('select', e);
-  Id.value = e;
-  getContent();
-};
+// const select = (e) => {
+//   console.log('select', e);
+//   Id.value = e;
+//   getContent();
+// };
 
 const getContent = async () => {
   const content = await axios.get(
     `http://127.0.0.1:2368/ghost/api/content/posts/${Id.value}/?key=7a8900504baaab57668c5a26e2&include=tags`
   );
-  console.log('content', content.data.posts[0].html);
+  console.log('content data', content.data.posts[0].html);
   HTML.value = content.data.posts[0].html;
 };
 </script>

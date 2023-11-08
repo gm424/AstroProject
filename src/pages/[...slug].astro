@@ -4,7 +4,7 @@ import Header from '../components/header.vue'
 import Contain from '../components/contain.vue'
 import '../styles/global.css'
 import 'element-plus/dist/index.css'
-import { ViewTransitions } from 'astro:transitions';
+
 const pages = [
   {
     slug: undefined,
@@ -12,17 +12,11 @@ const pages = [
     text: 'Welcome to the Astro store!',
   },
   {
-    slug: 'blog',
+    slug: 'sdhifgufg',
     title: 'Astro products',
     text: 'We have lots of products for you',
-  },
-  {
-    slug: 'products/astro-handbook',
-    title: 'The ultimate Astro handbook',
-    text: 'If you want to learn Astro, you must read this book.',
   }
 ];
-
 const { slug } = Astro.params;
 const page = pages.find((page) => page.slug === slug);
 if (!page) return Astro.redirect("/404");
@@ -36,9 +30,9 @@ const { title, text } = page;
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro</title>
-		<ViewTransitions />
 	</head>
 	<body>
+
 		<!-- <Header></Header> -->
 		<Navigation client:load></Navigation>
 		<Contain client:load></Contain>
