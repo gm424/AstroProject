@@ -11,7 +11,7 @@
       text-color="#fff"
       active-text-color="#ffd04b"
     >
-      <img src="../static/cd_logo_white.png" class="image" />
+      <img src="../components/cd_logo_white.png" class="image" />
       <el-menu-item index="1">首页</el-menu-item>
       <!-- <el-sub-menu index="2">
         <template #title>用户手册</template>
