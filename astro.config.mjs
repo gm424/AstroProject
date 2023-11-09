@@ -5,7 +5,7 @@ import node from '@astrojs/node';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://gm424.github.io',
-  base: 'AstroProject',
+  base: '/AstroProject',
   output: 'server',
   integrations: [
     vue({
