@@ -13,7 +13,7 @@
     >
       <img src="../static/cd_logo_white.png" class="image" />
       <el-menu-item index="1">首页</el-menu-item>
-      <el-sub-menu index="2">
+      <!-- <el-sub-menu index="2">
         <template #title>用户手册</template>
         <el-menu-item index="2-1">item one</el-menu-item>
         <el-menu-item index="2-2">item two</el-menu-item>
@@ -25,7 +25,7 @@
         <el-menu-item index="2-2">item two</el-menu-item>
         <el-menu-item index="2-3">item three</el-menu-item>
       </el-sub-menu>
-      <el-menu-item index="4">关于我们</el-menu-item>
+      <el-menu-item index="4">关于我们</el-menu-item> -->
     </el-menu>
   </div>
 </template>
